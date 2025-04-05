@@ -1,67 +1,68 @@
-# Web Security Telemetry SDK
+# 🛡️ PCI DSS Telemetry API (Backend)
 
-An open-source client-side JavaScript SDK that collects security telemetry from web applications and provides insights through a backend dashboard. The SDK helps detect bot traffic, anomalous behavior, and other potential security threats.
+Secure backend API that receives telemetry from the client-side JavaScript SDK to support PCI DSS v4.0 compliance.
 
 ## 🚀 Features
 
-- **Lightweight JavaScript SDK** – Easily integrate with any web application.
-- **Real-Time Telemetry Collection** – Captures browser events, device fingerprints, and performance metrics.
-- **Bot & Fraud Detection** – Identifies automated traffic using behavioral analysis.
-- **Secure Data Transmission** – Uses encryption (TLS 1.2+) and integrity checks.
-- **Privacy-Focused** – No collection of personally identifiable information (PII) or sensitive data.
-- **Backend API for Data Processing** – Receives and processes telemetry securely.
-- **Admin Dashboard** – Provides insights, visualizations, and alerts.
-- **Scalable & Open Source** – Community-driven development with extensible architecture.
-- **PCI DSS v4.0 Compliance Features:**
-  - **Inventory of all payment page vendor scripts** – Tracks and catalogs all third-party scripts running on payment pages.
-  - **Review of business justification and bulk script approval workflows** – Ensures all scripts have a valid business purpose and are approved before deployment.
-  - **Identify scripts accessing and extracting data to outside domains** – Detects and logs scripts that send data externally.
-  - **Show script change and tamper detection to alert on unauthorized changes** – Monitors script integrity and alerts admins on modifications.
-  - **Generate a compliance report as evidence for QSAs** – Provides detailed reports for compliance verification.
+- `POST /telemetry` endpoint to ingest SDK data
+- Secure API key authentication via headers
+- Validates payloads using Zod schema
+- Stores telemetry data in MongoDB
+- Designed for script inventory, anomaly detection, and compliance logging
 
-## 📦 Installation
+## 🛠 Tech Stack
 
-### Client-Side SDK
-```html
-<script src="https://cdn.example.com/security-sdk.js"></script>
-<script>
-  SecuritySDK.init({
-    apiKey: "your-api-key",
-    endpoint: "https://api.yourserver.com/telemetry",
-  });
-</script>
-```
+- Node.js + Express.js
+- MongoDB + Mongoose
+- Zod (schema validation)
+- dotenv for environment config
 
-### Backend Setup (Self-Hosted)
+## 📦 Setup Instructions
+
+ 1. Clone the repo
+
 ```bash
-git clone https://github.com/your-org/security-telemetry.git
-cd security-telemetry
+git clone https://github.com/Naman8kumar/www-project-pci-dss-toolkit.git
+cd www-project-pci-dss-toolkit
 npm install
+
+2. Add a .env file
+
+MONGO_URI=mongodb://localhost:27017/telemetry
+API_KEY=your-secure-api-key
+
+3. Start the server
 npm start
-```
+Server will run on: http://localhost:3000
 
-## ⚙️ Usage
+API Endpoint
+POST /telemetry
+Ingests telemetry data from the frontend SDK.
 
-### Sending Data
-```javascript
-SecuritySDK.sendEvent({
-  type: "click",
-  element: "#login-button",
-  timestamp: Date.now(),
-});
-```
+🔐 Headers
+x-api-key: your-secure-api-key
+Content-Type: application/json
 
-### Dashboard Access
-Once the backend is running, access the admin dashboard at:
-```
-http://localhost:3000/dashboard
-```
+🧾 Payload Example
+{
+  "sessionId": "abc123",
+  "timestamp": "2025-04-05T12:00:00Z",
+  "eventType": "script-load",
+  "scriptMetadata": {
+    "src": "https://cdn.example.com/script.js",
+    "type": "text/javascript",
+    "integrity": "sha256-xyz123"
+  }
+}
 
-## 🔐 Security Considerations
-- Uses **Subresource Integrity (SRI)** to prevent script tampering.
-- **CSP-compatible** to work with strict security policies.
-- **End-to-end encryption** for telemetry data.
-- **Role-based access control (RBAC)** for dashboard users.
+🔒 Security
+Validates payload with Zod
 
-## 🛠️ Tech Stack
-- **Client-Side
+API key protection
+
+No PII or sensitive data stored
+
+Timestamps and integrity fields for forensic analysis
+
+
+
