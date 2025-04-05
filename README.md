@@ -1,68 +1,38 @@
-# 🛡️ PCI DSS Telemetry API (Backend)
+# OWASP PCI DSS Toolkit
 
-Secure backend API that receives telemetry from the client-side JavaScript SDK to support PCI DSS v4.0 compliance.
+A modern developer-first toolkit to streamline PCI DSS v4.0 compliance through automation, secure telemetry, and developer-friendly tooling.
 
-## 🚀 Features
+---
 
-- `POST /telemetry` endpoint to ingest SDK data
-- Secure API key authentication via headers
-- Validates payloads using Zod schema
-- Stores telemetry data in MongoDB
-- Designed for script inventory, anomaly detection, and compliance logging
+## 🔧 Key Modules & Features
 
-## 🛠 Tech Stack
+| Feature | Description |
+|--------|-------------|
+| 🧠 **Developer Onboarding Guide** | Comprehensive `CONTRIBUTING.md` and `architecture-guide.md` help new developers understand setup, folder structure, and data flow. [#11](https://github.com/OWASP/www-project-pci-dss-toolkit/pull/11) |
+| 📤 **Exportable Compliance Reports** | Generate PCI DSS reports for QSA audits in CSV/PDF formats. [#8](https://github.com/OWASP/www-project-pci-dss-toolkit/pull/8) |
+| 🛡️ **Real-Time Bot Detection** | Behavior-based bot detection logic integrated into the SDK. [#6](https://github.com/OWASP/www-project-pci-dss-toolkit/pull/6) |
+| 📡 **Secure Telemetry Ingestion** | API for ingesting telemetry using MongoDB and Zod validation. [#4](https://github.com/OWASP/www-project-pci-dss-toolkit/pull/4) |
+| 📦 **Script Inventory Collection** | Collect and validate scripts as required for PCI DSS v4.0 compliance. [#2](https://github.com/OWASP/www-project-pci-dss-toolkit/pull/2) |
 
-- Node.js + Express.js
-- MongoDB + Mongoose
-- Zod (schema validation)
-- dotenv for environment config
+---
 
-## 📦 Setup Instructions
+## 🚀 Getting Started
 
- 1. Clone the repo
+> See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for full setup, folder structure, and PR instructions.
 
 ```bash
-git clone https://github.com/Naman8kumar/www-project-pci-dss-toolkit.git
-cd www-project-pci-dss-toolkit
+# Clone the repo
+git clone https://github.com/OWASP/www-project-pci-dss-toolkit.git
+
+# Install dependencies
 npm install
 
-2. Add a .env file
+# Start the development server
+npm run dev
 
-MONGO_URI=mongodb://localhost:27017/telemetry
-API_KEY=your-secure-api-key
+📐 System Architecture
+View the Architecture Guide for a full breakdown of data flow from SDK → Backend → DB → Dashboard.
 
-3. Start the server
-npm start
-Server will run on: http://localhost:3000
-
-API Endpoint
-POST /telemetry
-Ingests telemetry data from the frontend SDK.
-
-🔐 Headers
-x-api-key: your-secure-api-key
-Content-Type: application/json
-
-🧾 Payload Example
-{
-  "sessionId": "abc123",
-  "timestamp": "2025-04-05T12:00:00Z",
-  "eventType": "script-load",
-  "scriptMetadata": {
-    "src": "https://cdn.example.com/script.js",
-    "type": "text/javascript",
-    "integrity": "sha256-xyz123"
-  }
-}
-
-🔒 Security
-Validates payload with Zod
-
-API key protection
-
-No PII or sensitive data stored
-
-Timestamps and integrity fields for forensic analysis
-
-
+📄 License
+This project is licensed under the MIT License.
 
