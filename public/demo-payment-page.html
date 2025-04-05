@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Payment Page - PCI DSS Script Inventory</title>
+
+  <!-- Example third-party scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha384-pdummyhash123"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js"></script>
+
+  <!-- Inline script example -->
+  <script>
+    console.log("Inline script executed");
+  </script>
+
+  <!-- Security SDK Integration -->
+  <script type="module">
+    import { SecuritySDK } from '../client-sdk/index.js';
+
+    SecuritySDK.init({
+      apiKey: 'demo-api-key',
+      endpoint: 'https://api.example.com/telemetry' // Replace with your real endpoint
+    });
+  </script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background-color: #f7f7f7;
+    }
+    .card {
+      max-width: 400px;
+      margin: auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background: #0070f3;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Demo Payment Page</h1>
+    <p>This is a sample page for testing the PCI DSS script inventory feature.</p>
+    <button id="pay-now">Pay Now</button>
+  </div>
+
+  <!-- Simulate click event capture -->
+  <script>
+    document.getElementById("pay-now").addEventListener("click", () => {
+      console.log("Payment initiated!");
+    });
+  </script>
+</body>
+</html>
