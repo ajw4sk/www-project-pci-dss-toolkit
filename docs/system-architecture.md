@@ -18,9 +18,14 @@ This document outlines the high-level architecture of the OWASP PCI DSS Toolkit 
 
 ## 🔁 Data Flow Diagram (via Mermaid)
 
+### 🗂️ Architecture Flow
+
 ```mermaid
-flowchart TD
-    A[Client Browser<br>SDK] -->|Telemetry Data| B[Express API<br>/api/telemetry]
-    B --> C[MongoDB Database]
-    C --> D[Dashboard UI]
-    D --> E[Export PDF/CSV Reports]
+graph LR
+A[Security SDK] --> B[Telemetry API]
+B --> C[(MongoDB)]
+C --> D[Dashboard UI]
+```
+
+✳️ **Why It Matters:**  
+This helps onboard contributors quickly, reduces setup errors, and explains the complete data flow in the system.
