@@ -1,41 +1,68 @@
-# Contributing Guidelines
+# 🤝 Contributing Guide
 
-Thank you for your interest in contributing to an OWASP project. We welcome all contributions and appreciate your efforts to improve our projects.
+Welcome to the OWASP PCI DSS Toolkit! This guide will help you get started with development and contributing.
 
-## Getting Started
+---
 
-To get started with contributing to any OWASP project, please follow these steps:
+## 🛠️ Setup Instructions
 
-1. [Join](http://owasp.org/slack/invite) the [OWASP Slack workspace](https://owasp.slack.com) to connect with the OWASP community and get help with any questions you may have.
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/Naman8kumar/www-project-pci-dss-toolkit.git
+   cd www-project-pci-dss-toolkit
 
-2. Review the [OWASP Projects](https://owasp.org/projects/) page to browse the list of OWASP projects and find a project that aligns with your interests and skills.
+2. Install Dependencies
+   npm install
 
-3. Visit the project's individual page and repository to familiarize yourself with the project goals and objectives.
+3. Start Backend
+   cd backend
+   npm install
+   npm run dev
 
-4. Fork the repository and clone it to your local machine.
+4. Start Frontend (Dashboard)
+   cd client-dashboard
+   npm install
+   npm run dev
 
-5. Install any necessary dependencies and set up your development environment.
+5.  Client SDK
 
-6. Make your changes and test them locally to ensure they work as expected.
+    Located in /client-sdk
+    Load via:
+    <script src="web-security-sdk.js"></script>
 
-7. Submit a pull request with your changes.
+    📂 Folder Structure
 
-## Pull Request Guidelines
+    .
+    ├── backend/                  → Express.js API
+    │   ├── routes/telemetry.ts
+    │   ├── controllers/telemetry.ts
+    │   └── utils/pdfGenerator.ts
+    ├── client-dashboard/        → React/Next.js dashboard
+    ├── client-sdk/              → Lightweight browser SDK
+    ├── docs/                    → Documentation and architecture
+    │   └── system-architecture.md
+    └── CONTRIBUTING.md          → You are here!
 
-Before submitting a pull request, please make sure:
+   🧑‍💻 Making a Contribution
 
-1. Your changes are consistent with the project's goals and objectives.
+   1. Create a Branch
+   git checkout -b feat/my-awesome-feature
 
-2. Your changes are well-documented and follow the project's coding standards.
+   2. Make your changes
 
-3. Your changes do not introduce new bugs or break existing functionality.
+   3. Commit
+      git commit -m "[Feature] Add my awesome feature"
 
-4. Your changes are accompanied by tests, if applicable.
+   4. Push
+      git push origin feat/my-awesome-feature
 
-5. Your pull request includes a clear and concise description of the changes you have made.
+   5. Create a Pull Request
 
-## Code of Conduct
+     Go to your forked repo on GitHub.
+     Click "Compare & Pull Request".
 
-We ask that all contributors to OWASP projects abide by our [Code of Conduct](https://owasp.org/www-policy/operational/code-of-conduct). This code outlines our expectations for behavior within the project community and helps us maintain a welcoming and inclusive environment for all contributors.
+   ✅ Good First Issues
+   Check the issues tab for tasks labeled good first issue.
+   Thanks for contributing to open source and PCI security! 🛡️
 
-Thank you for your interest in contributing to an OWASP project. We appreciate your efforts to help us improve and grow our projects.
+
